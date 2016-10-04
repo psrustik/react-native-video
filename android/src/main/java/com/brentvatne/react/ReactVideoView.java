@@ -256,8 +256,14 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
 
     public void applyModifiers() {
         setResizeModeModifier(mResizeMode);
-        setRepeatModifier(mRepeat);
-        setPausedModifier(mPaused);
+        /*
+         * Repeat and paused modifiers not support for some mediaplayers state.
+         * Comment setRepeatModifier and setPausedModifier calls - work around for Android 4.4 HLS error
+         * "state 0, error (-38,0)"
+         */
+
+        //setRepeatModifier(mRepeat);
+        //setPausedModifier(mPaused);
         setMutedModifier(mMuted);
 //        setRateModifier(mRate);
     }

@@ -3,6 +3,7 @@ package com.brentvatne.react;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.util.Log;
 import android.webkit.CookieManager;
 
@@ -116,6 +117,7 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         if (mMediaPlayer == null) {
             mMediaPlayerValid = false;
             mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setWakeMode(mThemedReactContext.getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
             mMediaPlayer.setScreenOnWhilePlaying(true);
             mMediaPlayer.setOnVideoSizeChangedListener(this);
             mMediaPlayer.setOnErrorListener(this);
